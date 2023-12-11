@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>添加和删除卡密</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        .input-container {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 5px;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 10px;
+            color: #333333;
+        }
+
+        .error {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>添加卡密</h1>
+    <form id="addCardForm">
+        <div class="input-container">
+            <label for="codeInput">卡密：</label>
+            <input type="text" id="codeInput" required>
+        </div>
+        <div class="input-container">
+            <input type="submit" value="添加卡密">
+        </div>
+        <div id="addCardMessage" class="message"></div>
+    </form>
+
+    <h1>删除卡密</h1>
+    <form id="deleteCardForm">
+        <div class="input-container">
+            <label for="idInput">卡密ID：</label>
+            <input type="text" id="idInput" required>
+        </div>
+        <div class="input-container">
+            <input type="submit" value="删除卡密">
+        </div>
+        <div id="deleteCardMessage" class="message"></div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 添加卡密表单提交
+            $('#addCardForm').submit(function(event) {
+                event.preventDefault(); // 阻止表单的默认提交行为
+
+                const code = $('#codeInput').val();
+                $.ajax({
+                    method: 'POST',
+                    url: '/api/add-card',
+                    data: { code: code },
+                    success: function(response) {
+                        $('#addCardMessage').removeClass('error').addClass('success').text('成功添加卡密！');
+                    },
+                    error: function(xhr) {
+                        $('#addCardMessage').removeClass('success').addClass('error').text('添加卡密失败：' + xhr.responseText);
+                    }
+                });
+            });
+
+            // 删除卡密表单提交
+            $('#deleteCardForm').submit(function(event) {
+                event.preventDefault(); // 阻止表单的默认提交行为
+
+                const id = $('#idInput').val();
+                $.ajax({
+                    method: 'POST',
+                    url: '/api/delete-card',
+                    data: { id: id },
+                    success: function(response) {
+                        $('#deleteCardMessage').removeClass('error').addClass('success').text('成功删除卡密！');
+                    },
+                    error: function(xhr) {
+                        $('#deleteCardMessage').removeClass('success').addClass('error').text('删除卡密失败：' + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

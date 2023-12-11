@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>API 文档</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        .endpoint {
+            margin-bottom: 10px;
+        }
+
+        .endpoint-header {
+            font-weight: bold;
+        }
+
+        .endpoint-description {
+            margin-top: 5px;
+            margin-left: 20px;
+            color: #666666;
+        }
+
+        .parameter {
+            margin-bottom: 5px;
+            margin-left: 20px;
+        }
+
+        .parameter-name {
+            font-weight: bold;
+        }
+
+        .parameter-type {
+            font-style: italic;
+        }
+
+        .parameter-description {
+            margin-top: 5px;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+    <h1>API 文档</h1>
+    <div class="endpoint">
+        <div class="endpoint-header">添加卡密</div>
+        <div class="endpoint-description">
+            POST /api/add-card<br>
+            添加卡密到数据库。
+        </div>
+        <div class="parameter">
+            <div class="parameter-name">code</div>
+            <div class="parameter-type">string</div>
+            <div class="parameter-description">要添加的卡密。</div>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">删除卡密</div>
+        <div class="endpoint-description">
+            POST /api/delete-card<br>
+            从数据库中删除指定的卡密。
+        </div>
+        <div class="parameter">
+            <div class="parameter-name">id</div>
+            <div class="parameter-type">integer</div>
+            <div class="parameter-description">要删除的卡密的ID。</div>
+        </div>
+    </div>
+</body>
+</html>

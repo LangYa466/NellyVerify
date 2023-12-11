@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>卡密验证系统 - 安装</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            color: #333333;
+        }
+        
+        form {
+            margin-top: 50px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            border: 1px solid #cccccc;
+            background-color: #ffffff;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+        
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #337ab7;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #23527c;
+        }
+        
+        #installationMessage {
+            margin-top: 20px;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <h1>卡密验证系统 - 安装</h1>
+    <form id="installationForm">
+        <label for="hostInput">MySQL 主机：</label>
+        <input type="text" id="hostInput" required>
+        <br><br>
+        <label for="usernameInput">MySQL 用户名：</label>
+        <input type="text" id="usernameInput" required>
+        <br><br>
+        <label for="passwordInput">MySQL 密码：</label>
+        <input type="password" id="passwordInput" required>
+        <br><br>
+        <input type="submit" value="安装">
+    </form>
+
+    <script src="install.js"></script>
+</body>
+</html>
